@@ -1,4 +1,4 @@
-package test;
+package nonAuth;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,7 +18,16 @@ public class SslTestModule {
 		ctx.init(null, new NonAuthentication[] { new NonAuthentication() }, null);
 		factory = ctx.getSocketFactory();
 
-		URL url = new URL("https://expired.badssl.com/");
+//		bad ssl
+//		URL url = new URL("https://expired.badssl.com/");
+//		URL url = new URL("https://wrong.host.badssl.com/");	// Error: No subject alternative DNS name matching wrong.host.badssl.com found.
+//		URL url = new URL("https://self-signed.badssl.com/");
+//		URL url = new URL("https://untrusted-root.badssl.com/");
+//		URL url = new URL("https://revoked.badssl.com/");
+//		URL url = new URL("https://pinning-test.badssl.com/");
+
+//		normal ssl
+		URL url = new URL("https://example.com/");
 		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 		con.setSSLSocketFactory(factory);
 
